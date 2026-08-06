@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Fraunces, Instrument_Sans } from 'next/font/google'
 import { Providers } from '@/providers'
 import './globals.css'
 
@@ -13,6 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const fraunces = Fraunces({
+  variable: '--font-fraunces',
+  subsets: ['latin'],
+})
+
+const instrumentSans = Instrument_Sans({
+  variable: '--font-instrument-sans',
+  subsets: ['latin'],
+})
+
 export const metadata: Metadata = {
   title: {
     template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}`,
@@ -23,8 +33,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${instrumentSans.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col">
         <Providers>{children}</Providers>
       </body>
     </html>
